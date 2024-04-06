@@ -31,13 +31,13 @@ tau <- 10
 b <- c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 ```
 
-# Implémentation de la méthode MCMC
+# Implémentation de la méthode MCMC (Hastings within Gibbs)
 ```{r}
 seeds = function(nchain, N, r, n, x1, x2, alpha0, alpha1, alpha2, alpha12, tau, b, prop_sd){
   
   # Initialisation
   res = matrix(NA, nchain + 1, 5)
-  res[1, ] = c(alpha0, alpha1, alpha2, alpha12, 1/sqrt(tau)) # le dernier terme vaut sigma
+  res[1, ] = c(alpha0, alpha1, alpha12, alpha2, 1/sqrt(tau)) # le dernier terme vaut sigma
 
   p = plogis(alpha0 + alpha1 * x1 + alpha2 * x2 + alpha12 * x1 * x2 + b)
   
@@ -77,25 +77,10 @@ seeds = function(nchain, N, r, n, x1, x2, alpha0, alpha1, alpha2, alpha12, tau, 
       p = prop_p
       acc_rates[2] = acc_rates[2] + 1
     }
-    
-    # Mise à jour de alpha2
-    alpha2 = res[i, 3]
-    prop = rnorm(1, alpha2, prop_sd[3]) # marche aléatoire simple
-    prop_p = plogis(alpha0 + alpha1 * x1 + prop * x2 + alpha12 * x1 * x2 + b)
-    
-    top = - ((prop^2) / (2 * 1e6)) + sum(r * log(prop_p)) + sum((n-r) * log(1 - prop_p))
-    bottom = - ((alpha2^2) / (2 * 1e6)) + sum(r * log(p)) + sum((n-r) * log(1 - p))
-    acc_prob = exp(top - bottom) # Ratio des noyaux vaut 1 (symétrie du noyau)
-    
-    if (runif(1) < min(1, acc_prob)){
-      alpha2 = prop
-      p = prop_p
-      acc_rates[3] = acc_rates[3] + 1
-    }
-    
+
     # Mise à jour de alpha12
-    alpha12 = res[i, 4]
-    prop = rnorm(1, alpha12, prop_sd[4]) # marche aléatoire simple
+    alpha12 = res[i, 3]
+    prop = rnorm(1, alpha12, prop_sd[3]) # marche aléatoire simple
     prop_p = plogis(alpha0 + alpha1 * x1 + alpha2 * x2 + prop * x1 * x2 + b)
     
     top = - ((prop^2) / (2 * 1e6)) + sum(r * log(prop_p)) + sum((n-r) * log(1 - prop_p))
@@ -104,6 +89,21 @@ seeds = function(nchain, N, r, n, x1, x2, alpha0, alpha1, alpha2, alpha12, tau, 
     
     if (runif(1) < min(1, acc_prob)){
       alpha12 = prop
+      p = prop_p
+      acc_rates[3] = acc_rates[3] + 1
+    }
+    
+    # Mise à jour de alpha2
+    alpha2 = res[i, 4]
+    prop = rnorm(1, alpha2, prop_sd[4]) # marche aléatoire simple
+    prop_p = plogis(alpha0 + alpha1 * x1 + prop * x2 + alpha12 * x1 * x2 + b)
+    
+    top = - ((prop^2) / (2 * 1e6)) + sum(r * log(prop_p)) + sum((n-r) * log(1 - prop_p))
+    bottom = - ((alpha2^2) / (2 * 1e6)) + sum(r * log(p)) + sum((n-r) * log(1 - p))
+    acc_prob = exp(top - bottom) # Ratio des noyaux vaut 1 (symétrie du noyau)
+    
+    if (runif(1) < min(1, acc_prob)){
+      alpha2 = prop
       p = prop_p
       acc_rates[4] = acc_rates[4] + 1
     }
@@ -127,7 +127,7 @@ seeds = function(nchain, N, r, n, x1, x2, alpha0, alpha1, alpha2, alpha12, tau, 
     }
     
     # Mise à jour de la chaine de Markov et de b
-    res[i+1, ] = c(alpha0, alpha1, alpha2, alpha12, 1/sqrt(tau))
+    res[i+1, ] = c(alpha0, alpha1, alpha12, alpha2, 1/sqrt(tau))
     res_b[i+1, ] = b
   }
   
@@ -136,8 +136,19 @@ seeds = function(nchain, N, r, n, x1, x2, alpha0, alpha1, alpha2, alpha12, tau, 
 }
 ```
 
+# Récupération des résultats
 ```{r}
-resultat = seeds(1e4, N, r, n, x1, x2, alpha0, alpha1, alpha2, alpha12, tau, b, prop_sd = c(0.25, 0.5, 0.3, 0.5, 0.3))
-```
+resultat = seeds(1e4, N, r, n, x1, x2, alpha0, alpha1, alpha2, alpha12, tau, b, prop_sd = c(0.3, 0.3, 0.3, 0.3, 0.3)) # prop_sd choisi pour avoir une allure de chaîne cohérente
 
+resultat_chain = resultat$chain[1001:nrow(resultat$chain), ] # on enlève les 1000 premiers (burnin)
+
+moychain = colMeans(resultat_chain) # moyenne
+sdchain = apply(resultat_chain, 2, sd) # écart type
+
+cat("alpha_0 est estimé à", moychain[1], "avec un écart-type de", sdchain[1], "\n")
+cat("alpha_1 est estimé à", moychain[2], "avec un écart-type de", sdchain[2], "\n")
+cat("alpha_12 est estimé à", moychain[3], "avec un écart-type de", sdchain[3], "\n")
+cat("alpha_2 est estimé à", moychain[4], "avec un écart-type de", sdchain[4], "\n")
+cat("sigma est estimé à", moychain[5], "avec un écart-type de", sdchain[5], "\n")
+```
 
