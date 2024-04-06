@@ -95,5 +95,3 @@ $\sigma$ & 0.3198 & 0.267 & 0.0661 & 0.1471 \\
 -   Allure des densités des chaines (Najib)
 
 # Analyse des résultats (?)
-
-Reprendre leur interprétation en reformulant ce qu'ils ont dit
