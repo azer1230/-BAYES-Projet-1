@@ -80,9 +80,23 @@ $$
   \tau \sim \text{gamma}(10^{-3}, 10^{-3})
 $$
 
+Une dernière hypothèse que nous ferons également est que $r_i$ sont indépendants.
+
 ## Graphe acyclique orienté (Najib)
 
 ## Lois conditionnelles (Matheus)
+
+Como iremos aplicar Hastings-within-Gibbs, teremos que ter as leis condicionais de todos os parametros da expressão de $logit(p_i)$, ou seja, teremos que obter todas as leis posteriores. Para $\alpha \in \{\alpha_0, \alpha_1, \alpha_{12}, \alpha_2\}$ teremos :
+
+$$
+  \pi(\alpha_0|\alpha_1, \alpha_{12}, \alpha_2, r, b, \tau) \propto \pi(\alpha_1, \alpha_{12}, \alpha_2, r, b, \tau|\alpha_0)\pi(\alpha_0)
+$$
+
+No contexto de H-W-Gibbs, como vamos atualizar os parametros separadamentes considerando como valores fixos os outros, teremos:
+
+$$
+    \pi(\alpha_0|\alpha_1, \alpha_{12}, \alpha_2, r, b, \tau) \propto \pi(r|\alpha_0,\alpha_1, \alpha_{12}, \alpha_2, b, \tau)\pi(\alpha_0)\\ =  \pi(\alpha_0)\prod_{i=1}^4\pi(r_i|\alpha_0,\alpha_1, \alpha_{12}, \alpha_2, i, \tau)\\ = \pi(\alpha_0)\prod_{i=1}^4p_i^{r_i}(1-p)^{n_i - r_i}
+$$
 
 # Résultats de l'implémentation algorithmique
 
