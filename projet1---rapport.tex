@@ -1,0 +1,194 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Seeds - Random effect logistic regression},
+  pdfauthor={BRUNO LOPES Matheus, MOURDI Elias, SELAMNIA Najib, TRIOMPHE Amaury},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Seeds - Random effect logistic regression}
+\author{BRUNO LOPES Matheus, MOURDI Elias, SELAMNIA Najib, TRIOMPHE
+Amaury}
+\date{15/04/2024}
+
+\begin{document}
+\maketitle
+
+\textbf{Lien vers notre Github} :
+\texttt{https://github.com/azer1230/-BAYES-Projet-1}
+
+\hypertarget{donnuxe9es-uxe9tudiuxe9es}{%
+\section{Données étudiées}\label{donnuxe9es-uxe9tudiuxe9es}}
+
+Le contexte de notre projet est l'étude de la germination de graines
+respectant certaines propriétés. Dans notre exemple, \(N = 21\) plaques
+sont disposées pour accueillir 2 types de graines issues de 2 types de
+racines. Les tableaux ci-dessous recensent les résultat pour ces 4 types
+de population. \(\forall i \in \{1,...,21\}, r_i\) correspond au nombre
+de graines germées et \(n_i\) correspond au nombre total de graines sur
+la \(i-\)ème plaque. Le rapport entre ces deux grandeurs est donc la
+proportion de graines ayant germé sur la dite plaque.
+
+\begin{table}[h]
+\centering
+\small
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{\textbf{Bean}} & \multicolumn{3}{|c|}{\textbf{Cucumber}} \\
+\hline
+\textbf{r} & \textbf{n} & \textbf{r/n} & \textbf{r} & \textbf{n} & \textbf{r/n} \\
+\hline
+10 & 39 & 0.26 & 5 & 6 & 0.83 \\
+23 & 62 & 0.37 & 53 & 74 & 0.72 \\
+23 & 81 & 0.28 & 55 & 72 & 0.76 \\
+26 & 51 & 0.51 & 32 & 51 & 0.63 \\
+17 & 39 & 0.44 & 46 & 79 & 0.58 \\
+ & & & 10 & 13 & 0.77 \\
+\hline
+\end{tabular}
+\caption{Données récupérées pour la graine seed O. aegyptiaco 75}
+\label{tab:tableau1}
+\end{minipage}\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{\textbf{Bean}} & \multicolumn{3}{|c|}{\textbf{Cucumber}} \\
+\hline
+\textbf{r} & \textbf{n} & \textbf{r/n} & \textbf{r} & \textbf{n} & \textbf{r/n} \\
+\hline
+8 & 16 & 0.5 & 3 & 12 & 0.25 \\
+10 & 30 & 0.33 & 22 & 41 & 0.54 \\
+8 & 28 & 0.29 & 15 & 30 & 0.5 \\
+23 & 45 & 0.51 & 32 & 51 & 0.63 \\
+0 & 4 & 0 & 3 & 7 & 0.43 \\
+\hline
+\end{tabular}
+\caption{Données récupérées pour la graine seed O. aegyptiaco 73}
+\label{tab:tableau2}
+\end{minipage}
+\end{table}
+
+\hypertarget{cadre-mathuxe9matique}{%
+\section{Cadre mathématique}\label{cadre-mathuxe9matique}}
+
+\hypertarget{hypothuxe8ses-sur-nos-donnuxe9es}{%
+\subsection{Hypothèses sur nos données
+(?)}\label{hypothuxe8ses-sur-nos-donnuxe9es}}
+
+\hypertarget{graphe-acyclique-orientuxe9-najib}{%
+\subsection{Graphe acyclique orienté
+(Najib)}\label{graphe-acyclique-orientuxe9-najib}}
+
+\hypertarget{lois-conditionnelles}{%
+\subsection{Lois conditionnelles (?)}\label{lois-conditionnelles}}
+
+\hypertarget{ruxe9sultats-de-limpluxe9mentation-algorithmique}{%
+\section{Résultats de l'implémentation
+algorithmique}\label{ruxe9sultats-de-limpluxe9mentation-algorithmique}}
+
+Grâce au calcul précédent des lois conditionnelles, nous avons pu
+implémenter un algorithme de Hasting Within Gibbs pour estimer nos
+paramètres. De la même manière que ce qui est donné dans l'énoncé, nous
+avons généré \(10^4\) réalisations auxquelles nous avons retiré les 1000
+premières, correspondant à la burnin period. Les résultats obtenus,
+ainsi qu'une comparaison avec ce qui est donné dans l'énoncé, sont
+mentionnés dans le tableau ce-dessous.
+
+\begin{table}[h]
+\centering
+\small
+\begin{minipage}{0.45\textwidth}
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\multicolumn{1}{|c|}{} &
+\multicolumn{2}{|c|}{\textbf{Moyenne}} & \multicolumn{2}{|c|}{\textbf{Écart-type}} \\
+\hline
+\textbf{Paramètres} & \textbf{Résultat} & \textbf{Énoncé} & \textbf{Résultat} & \textbf{Énoncé} \\
+\hline
+$\alpha_0$ & -0.5562 & -0.5525 & 0.1865 & 0.1852 \\
+$\alpha_1$ & 0.0706 & 0.08382 & 0.3252 & 0.3031 \\
+$\alpha_{12}$ & -0.8021 & -0.8165 & 0.4564 & 0.4109 \\
+$\alpha_2$ & 1.3511 & 1.346 & 0.2745 & 0.2564 \\
+$\sigma$ & 0.3198 & 0.267 & 0.0661 & 0.1471 \\
+\hline
+\end{tabular}
+\caption{Résultats de notre algorithme Hastings within Gibbs}
+\end{minipage}
+\end{table}
+
+\begin{itemize}
+\tightlist
+\item
+  Allure des chaines de Markov (Matheus)
+\item
+  Allure des densités des chaines (Najib)
+\end{itemize}
+
+\hypertarget{analyse-des-ruxe9sultats}{%
+\section{Analyse des résultats (?)}\label{analyse-des-ruxe9sultats}}
+
+\end{document}

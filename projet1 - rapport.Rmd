@@ -12,6 +12,7 @@ keep_tex: true
 
 Le contexte de notre projet est l'étude de la germination de graines respectant certaines propriétés. Dans notre exemple, $N = 21$ plaques sont disposées pour accueillir 2 types de graines issues de 2 types de racines. Les tableaux ci-dessous recensent les résultat pour ces 4 types de population. $\forall i \in \{1,...,21\}, r_i$ correspond au nombre de graines germées et $n_i$ correspond au nombre total de graines sur la $i-$ème plaque. Le rapport entre ces deux grandeurs est donc la proportion de graines ayant germé sur la dite plaque.
 
+```{=tex}
 \begin{table}[h]
 \centering
 \small
@@ -53,7 +54,7 @@ Le contexte de notre projet est l'étude de la germination de graines respectant
 \label{tab:tableau2}
 \end{minipage}
 \end{table}
-
+```
 # Cadre mathématique
 
 ## Hypothèses sur nos données (?)
@@ -66,6 +67,7 @@ Le contexte de notre projet est l'étude de la germination de graines respectant
 
 Grâce au calcul précédent des lois conditionnelles, nous avons pu implémenter un algorithme de Hasting Within Gibbs pour estimer nos paramètres. De la même manière que ce qui est donné dans l'énoncé, nous avons généré $10^4$ réalisations auxquelles nous avons retiré les 1000 premières, correspondant à la burnin period. Les résultats obtenus, ainsi qu'une comparaison avec ce qui est donné dans l'énoncé, sont mentionnés dans le tableau ce-dessous.
 
+```{=tex}
 \begin{table}[h]
 \centering
 \small
@@ -88,9 +90,7 @@ $\sigma$ & 0.3198 & 0.267 & 0.0661 & 0.1471 \\
 \caption{Résultats de notre algorithme Hastings within Gibbs}
 \end{minipage}
 \end{table}
-
-
-
+```
 -   Allure des chaines de Markov (Matheus)
 -   Allure des densités des chaines (Najib)
 
