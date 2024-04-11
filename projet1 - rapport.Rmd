@@ -57,11 +57,32 @@ Le contexte de notre projet est l'étude de la germination de graines respectant
 ```
 # Cadre mathématique
 
-## Hypothèses sur nos données (?)
+## Hypothèses sur nos données (Matheus)
+
+Si $p_i$ est la probabilité de germination sur la plaque $i$, alors supposons que le nombre de graines germées $r_i$ suit une loi binomiale :
+
+$$
+r_i \sim \text{Binomial}(p_i,n_i)
+$$
+
+De plus, supposons que le modèle est essentiellement une régression logistique à effets aléatoires, ce qui permet de traiter la surdispersion. Autrement dit :
+
+$$
+  \text{logit}(p_i) = \alpha_0 + \alpha_1x_{1i} + \alpha_2x_{2i} + \alpha_{12}x_{1i}x_{2i} + b_i \\
+  \text{où } b_i \sim \mathcal{N}(0,\tau)
+$$
+
+Où $x_{1i}$, $x_{2i}$ sont le type de graine et l'extrait de racine de la $i$-ème plaque, et un terme d'interaction $\alpha_{12}x_{1i}x_{2i}$ est inclus. $\alpha_0, \alpha_1, \alpha_2, \alpha_{12}, \tau$ ont des priors indépendants "non informatifs" fournis, qui seront supposés comme suit :
+
+$$
+  \alpha_i \sim \mathcal{N}(0, 10^6), \: \text{pour} \: i \in \{0, 1, 2\} \\
+  \alpha_{12} \sim \mathcal{N}(0, 10^6) \\
+  \tau \sim \text{gamma}(10^{-3}, 10^{-3})
+$$
 
 ## Graphe acyclique orienté (Najib)
 
-## Lois conditionnelles (?)
+## Lois conditionnelles (Matheus)
 
 # Résultats de l'implémentation algorithmique
 
