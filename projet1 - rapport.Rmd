@@ -3,6 +3,7 @@ title: "Seeds - Random effect logistic regression"
 author: "BRUNO LOPES Matheus, MOURDI Elias, SELAMNIA Najib, TRIOMPHE Amaury"
 date: "15/04/2024"
 output:
+  pdf_document: default
   html_document:
     df_print: paged
 keep_tex: yes
@@ -302,3 +303,22 @@ Les résultats obtenues sont cohérents avec l'objectif initial visé dans l'én
 (Voir pour les sigma)
 
 # Analyse des résultats (Amaury)
+
+```{=tex}
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Nom} & \textbf{x1} & \textbf{x2} & \textbf{logit(p)} \\
+\hline
+Bean 75 & 0 & 0 & -0.5517254 \\
+Cucumber 75 & 0 & 1 & 0.8027722  \\
+Bean 73 & 1 & 0 & -0.4682697 \\
+Cucumber 73 & 1 & 1 & 0.04229868 \\
+\hline
+\end{tabular}
+\caption{Logit(p) pour différentes valeurs de x1 et x2}
+\label{tab:tableau_combine}
+\end{table}
+```
