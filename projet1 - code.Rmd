@@ -182,5 +182,5 @@ mtext(expression("Graphiques pour " * sigma), side = 3, line = 1)
 ```
 
 ```{r}
-
+changement
 ```
