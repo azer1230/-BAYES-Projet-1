@@ -181,6 +181,22 @@ mtext(expression("Graphiques pour " * sigma), side = 3, line = 1)
 
 ```
 
+#Début analyse : calcul logit(p)
+
 ```{r}
+resultat_b_chain = resultat$b_chain[1001:nrow(resultat$b_chain), ] # on enlève les 1000 premiers (burnin)
+
+moyb_chain = colMeans(resultat_b_chain) # moyenne
+```
+
+
+```{r}
+cat("logit(p) : ", "\n")
+cat("pour x1 = 0 et x2 = 0:", moychain[1] + moychain[2]*0 + moychain[3]*0 + moychain[4]*0 + mean(moyb_chain[1:5]), "\n")
+cat("pour x1 = 0 et x2 = 1:", moychain[1] + moychain[2]*0 + moychain[3]*1 + moychain[4]*0 + mean(moyb_chain[6:11]), "\n")
+cat("pour x1 = 1 et x2 = 0:", moychain[1] + moychain[2]*1 + moychain[3]*0 + moychain[4]*0 + mean(moyb_chain[12:16]), "\n")
+cat("pour x1 = 1 et x2 = 1:", moychain[1] + moychain[2]*1 + moychain[3]*1 + moychain[4]*0 + mean(moyb_chain[17:21]), "\n")
 
 ```
+
+
