@@ -208,9 +208,9 @@ moyb_chain = colMeans(resultat_b_chain) # moyenne de b
 #pour les alpha, on utilise les moyennes calculé précèment. Pour b, on fait en plus la moyenne sur les plaques qui ont les mêmes types de graines.
 cat("logit(p) : ", "\n")
 cat("pour x1 = 0 et x2 = 0:", moychain[1] + moychain[2]*0 + moychain[3]*0 + moychain[4]*0 + mean(moyb_chain[1:5]), "\n")
-cat("pour x1 = 0 et x2 = 1:", moychain[1] + moychain[2]*0 + moychain[3]*1 + moychain[4]*0 + mean(moyb_chain[6:11]), "\n")
+cat("pour x1 = 0 et x2 = 1:", moychain[1] + moychain[2]*0 + moychain[3]*0 + moychain[4]*1 + mean(moyb_chain[6:11]), "\n")
 cat("pour x1 = 1 et x2 = 0:", moychain[1] + moychain[2]*1 + moychain[3]*0 + moychain[4]*0 + mean(moyb_chain[12:16]), "\n")
-cat("pour x1 = 1 et x2 = 1:", moychain[1] + moychain[2]*1 + moychain[3]*1 + moychain[4]*0 + mean(moyb_chain[17:21]), "\n")
+cat("pour x1 = 1 et x2 = 1:", moychain[1] + moychain[2]*1 + moychain[3]*1 + moychain[4]*1+ mean(moyb_chain[17:21]), "\n")
 
 ```
 
