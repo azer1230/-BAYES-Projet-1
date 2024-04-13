@@ -134,16 +134,98 @@ proportion de graines ayant germé sur la dite plaque.
 \hypertarget{cadre-mathuxe9matique}{%
 \section{Cadre mathématique}\label{cadre-mathuxe9matique}}
 
-\hypertarget{hypothuxe8ses-sur-nos-donnuxe9es}{%
+\hypertarget{hypothuxe8ses-sur-nos-donnuxe9es-matheus}{%
 \subsection{Hypothèses sur nos données
-(?)}\label{hypothuxe8ses-sur-nos-donnuxe9es}}
+(Matheus)}\label{hypothuxe8ses-sur-nos-donnuxe9es-matheus}}
+
+Si \(p_i\) est la probabilité de germination sur la plaque \(i\), alors
+supposons que le nombre de graines germées \(r_i\) suit une loi
+binomiale :
+
+\[
+r_i \sim \text{Binomial}(p_i,n_i)
+\]
+
+De plus, supposons que le modèle est essentiellement une régression
+logistique à effets aléatoires, ce qui permet de traiter la
+surdispersion. Autrement dit :
+
+\[
+  \text{logit}(p_i) = \alpha_0 + \alpha_1x_{1i} + \alpha_2x_{2i} + \alpha_{12}x_{1i}x_{2i} + b_i \\
+  \text{où } b_i \sim \mathcal{N}(0,\tau)
+\]
+
+Où \(x_{1i}\), \(x_{2i}\) sont le type de graine et l'extrait de racine
+de la \(i\)-ème plaque, et un terme d'interaction
+\(\alpha_{12}x_{1i}x_{2i}\) est inclus.
+\(\alpha_0, \alpha_1, \alpha_2, \alpha_{12}, \tau\) ont des priors
+indépendants ``non informatifs'' fournis, qui seront supposés comme suit
+:
+
+\[
+  \alpha_i \sim \mathcal{N}(0, 10^6), \: \text{pour} \: i \in \{0, 1, 2\} \\
+  \alpha_{12} \sim \mathcal{N}(0, 10^6) \\
+  \tau \sim \text{gamma}(10^{-3}, 10^{-3})
+\]
+
+Une dernière hypothèse que nous ferons également est que \(r_i\) sont
+indépendants.
 
 \hypertarget{graphe-acyclique-orientuxe9-najib}{%
 \subsection{Graphe acyclique orienté
 (Najib)}\label{graphe-acyclique-orientuxe9-najib}}
 
-\hypertarget{lois-conditionnelles}{%
-\subsection{Lois conditionnelles (?)}\label{lois-conditionnelles}}
+\hypertarget{lois-conditionnelles-matheus}{%
+\subsection{Lois conditionnelles
+(Matheus)}\label{lois-conditionnelles-matheus}}
+
+Comme nous allons appliquer Hastings-within-Gibbs, nous devrons avoir
+les lois conditionnelles de tous les paramètres de l'expression de
+\(logit(p_i)\), c'est-à-dire que nous devrons obtenir toutes les lois
+postérieures. Pour \(\alpha_0\), nous aurons :
+
+\[
+  \pi(\alpha_0|\alpha_1, \alpha_{12}, \alpha_2, r, b, \tau) \propto \pi(\alpha_1, \alpha_{12}, \alpha_2, r, b, \tau|\alpha_0)\pi(\alpha_0)
+\]
+
+Dans le contexte de H-W-Gibbs, comme nous allons mettre à jour les
+paramètres séparément en considérant les autres comme des valeurs fixes,
+nous aurons :
+
+\[
+    \pi(\alpha_0|\alpha_1, \alpha_{12}, \alpha_2, r, b, \tau) \propto \pi(r|\alpha_0,\alpha_1, \alpha_{12}, \alpha_2, b, \tau)\pi(\alpha_0)\\ =  \pi(\alpha_0)\prod_{i=1}^N\pi(r_i|\alpha_0,\alpha_1, \alpha_{12}, \alpha_2, i,b, \tau)\\ = \pi(\alpha_0)\prod_{i=1}^Np_i^{r_i}(1-p)^{n_i - r_i}
+\]
+
+Comme tous suivent la même loi a priori, nous aurons des expressions
+similaires pour \(\alpha_1, \alpha_{12}\) et \(\alpha_2\). Pour
+\(\tau\), nous devrons, comme \(\tau\) dépend de \(b\) qui suit une loi
+normale, qui dans ce cas est conjuguée par la loi gamma (loi a priori de
+\(\tau\)), obtenir directement la loi a posteriori de \(\tau\) :
+
+\[
+  \tau|\alpha_0, \alpha_{1}, \alpha_{12},\alpha_2, i , b, r \sim gamma(10^{-3} + \frac{N}{2}, 10^{-3} + \frac{\sum_{i=1}^Nb_i^2}{2})
+\]
+
+Une fois \(\tau\) mis à jour dans l'algorithme, nous pourrons mettre à
+jour chaque \(b_i\), pour \(i \in \{1, ..., N\}\), où chacun aura la loi
+a posteriori suivante :
+
+\[
+  \pi(b_i| \alpha_0, \alpha_{1}, \alpha_{12},\alpha_2, i , r_i, \tau) \propto \pi( \alpha_0, \alpha_{1}, \alpha_{12},\alpha_2, i , r_i, \tau| b_i)\pi(b_i)
+\]
+
+En considérant que
+\(\alpha_0, \alpha_{1}, \alpha_{12},\alpha_2, i, \tau\) sont des
+paramètres déjà fixes et que \(b_i \sim N(0,\frac{1}{\tau})\), nous
+pouvons écrire :
+
+\[
+  \pi(b_i| \alpha_0, \alpha_{1}, \alpha_{12},\alpha_2, i , r_i, \tau) \propto \pi(r_i|\alpha_0, \alpha_{1}, \alpha_{12},\alpha_2, i , \tau, b_i)\exp(-\frac{b_i^2\tau}{2}) \\
+  =p_i^{r_i}(1-p_i)^{n_i-r_i}\exp{(-\frac{b_i^2\tau}{2})}
+\]
+
+Maintenant, ayant toutes les lois conditionnelles, nous pouvons
+appliquer notre algorithme Hastings-within-Gibbs.
 
 \hypertarget{ruxe9sultats-de-limpluxe9mentation-algorithmique}{%
 \section{Résultats de l'implémentation
