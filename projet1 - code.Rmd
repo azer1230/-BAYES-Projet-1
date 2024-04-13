@@ -181,16 +181,31 @@ mtext(expression("Graphiques pour " * sigma), side = 3, line = 1)
 
 ```
 
-#Début analyse : calcul logit(p)
+## Vérification de b pour quelques valeurs.
+```{r}
+legend=c("b1", "b7", "b14", "b21")
+valeur = c(1,7,14,21)
+par(mfrow = c(4, 2), mar = c(1, 6, 1, 6))
+for (j in 1:4){
+  plot(resultat$b_chain[-burnin,][,valeur[j]], type = "l", main = "",ylab=legend[j])
+  plot(density(resultat$b_chain[-burnin,][,valeur[j]]), type = "l", main = "")
+}
+```
+
+Comportement normal de b.
+
+#Analyse.interprétation : on calcule logit(p) avec les valeurs trouvées précèdemment pour voir l'impact de x1 et x2 :
 
 ```{r}
+#On calcule ici la moyenne de b utilisé après : 
 resultat_b_chain = resultat$b_chain[1001:nrow(resultat$b_chain), ] # on enlève les 1000 premiers (burnin)
 
-moyb_chain = colMeans(resultat_b_chain) # moyenne
+moyb_chain = colMeans(resultat_b_chain) # moyenne de b
 ```
 
 
 ```{r}
+#pour les alpha, on utilise les moyennes calculé précèment. Pour b, on fait en plus la moyenne sur les plaques qui ont les mêmes types de graines.
 cat("logit(p) : ", "\n")
 cat("pour x1 = 0 et x2 = 0:", moychain[1] + moychain[2]*0 + moychain[3]*0 + moychain[4]*0 + mean(moyb_chain[1:5]), "\n")
 cat("pour x1 = 0 et x2 = 1:", moychain[1] + moychain[2]*0 + moychain[3]*1 + moychain[4]*0 + mean(moyb_chain[6:11]), "\n")

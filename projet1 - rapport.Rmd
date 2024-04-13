@@ -301,4 +301,4 @@ Les résultats obtenues sont cohérents avec l'objectif initial visé dans l'én
 
 (Voir pour les sigma)
 
-# Analyse des résultats (?)
+# Analyse des résultats (Amaury)
