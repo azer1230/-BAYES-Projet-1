@@ -157,7 +157,7 @@ cat("alpha_2 est estimé à", moychain[4], "avec un écart-type de", sdchain[4],
 cat("sigma est estimé à", moychain[5], "avec un écart-type de", sdchain[5], "\n")
 ```
 
-# Allure des chaines et densités
+# Allure des chaines
 
 ```{r}
 library(coda)
@@ -178,5 +178,9 @@ plot(mcmc(resultat_chain)[,4:5])
 mtext(expression("Graphiques pour " * alpha[2]), side = 3, line = 12)
 mtext(expression("Graphiques pour " * sigma), side = 3, line = 1)
 
+
+```
+
+```{r}
 
 ```
