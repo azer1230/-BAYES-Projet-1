@@ -152,7 +152,7 @@ $\sigma$ & 0.3198 & 0.267 & 0.0661 & 0.1471 \\
 
 On rend également compte des résultats des chaînes de Markov générées (à gauche), ainsi que de leurs distributions (à droite) dans ls graphiques ci-dessous: 
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.align='center'}
 # Notations changées par rapport au fichier seeds.data pour être en accord avec 
 # la consigne donnée
 "N" <- 21 
@@ -277,11 +277,6 @@ resultat_chain = resultat$chain[1001:nrow(resultat$chain), ] # on enlève les 10
 moychain = colMeans(resultat_chain) # moyenne
 sdchain = apply(resultat_chain, 2, sd) # écart type
 
-cat("alpha_0 est estimé à", moychain[1], "avec un écart-type de", sdchain[1], "\n")
-cat("alpha_1 est estimé à", moychain[2], "avec un écart-type de", sdchain[2], "\n")
-cat("alpha_12 est estimé à", moychain[3], "avec un écart-type de", sdchain[3], "\n")
-cat("alpha_2 est estimé à", moychain[4], "avec un écart-type de", sdchain[4], "\n")
-cat("sigma est estimé à", moychain[5], "avec un écart-type de", sdchain[5], "\n")
 
 library(coda)
 par(ask = FALSE, mfrow = c(3, 1), mar = c(1, 1, 3, 3)) # Configure la disposition des graphiques 
@@ -302,7 +297,8 @@ mtext(expression("Graphiques pour " * alpha[2]), side = 3, line = 12)
 mtext(expression("Graphiques pour " * sigma), side = 3, line = 1)
 ```
 
--   Allure des chaines de Markov Najib
--   Allure des densités des chaines Najib
+Les résultats obtenues sont cohérents avec l'objectif initial visé dans l'énoncé. Les valeurs sont distribuées autour des moyennes attendues et les écart-types sont également en accord avec les attentes, en observant des variations inférieurs à 20%.
+
+(Voir pour les sigma)
 
 # Analyse des résultats (?)
