@@ -157,7 +157,7 @@ cat("alpha_2 est estimé à", moychain[4], "avec un écart-type de", sdchain[4],
 cat("sigma est estimé à", moychain[5], "avec un écart-type de", sdchain[5], "\n")
 ```
 
-# Allure des chaines
+# 
 
 ```{r}
 library(coda)
