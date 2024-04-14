@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.17)  13 APR 2024 18:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2024.1.17)  14 APR 2024 02:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -416,12 +416,12 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 [1
 
 {/Users/amaurytriomphe/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/Users/amaurytriomphe/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/Users/amaurytriomphe/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/Users/amaurytriomphe/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/Users/amaurytriomphe/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}]
-Overfull \hbox (49.9253pt too wide) detected at line 197
+Overfull \hbox (49.9253pt too wide) detected at line 196
 \OML/lmm/m/it/10 ^^Y\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 []\OMS/lmsy/m/n/10 j\OML/lmm/m/it/10 []; []; []; r; b; ^^\\OT1/lmr/m/n/10 ) \OMS/lmsy/m/n/10 / \OML/lmm/m/it/10 ^^Y\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 r\OMS/lmsy/m/n/10 j\OML/lmm/m/it/10 []; []; []; []; b; ^^\\OT1/lmr/m/n/10 )\OML/lmm/m/it/10 ^^Y\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 []\OT1/lmr/m/n/10 )[]  = \OML/lmm/m/it/10 ^^Y\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 []\OT1/lmr/m/n/10 ) [] \OML/lmm/m/it/10 ^^Y\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 r[]\OMS/lmsy/m/n/10 j\OML/lmm/m/it/10 []; []; []; []; i; b; ^^\\OT1/lmr/m/n/10 )[]  = \OML/lmm/m/it/10 ^^Y\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 []\OT1/lmr/m/n/10 ) [] \OML/lmm/m/it/10 p[]\OT1/lmr/m/n/10 (1 \OMS/lmsy/m/n/10 ^^@ \OML/lmm/m/it/10 p\OT1/lmr/m/n/10 )[]
  []
 
 
-Overfull \hbox (48.0603pt too wide) in paragraph at lines 247--261
+Overfull \hbox (48.0603pt too wide) in paragraph at lines 246--260
  [][] 
  []
 
@@ -431,35 +431,41 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <projet1---rapport_files/figure-latex/unnamed-chunk-1-1.pdf, id=55, 469.755pt x 325.215pt>
 File: projet1---rapport_files/figure-latex/unnamed-chunk-1-1.pdf Graphic file (type pdf)
 <use projet1---rapport_files/figure-latex/unnamed-chunk-1-1.pdf>
-Package pdftex.def Info: projet1---rapport_files/figure-latex/unnamed-chunk-1-1.pdf  used on input line 269.
+Package pdftex.def Info: projet1---rapport_files/figure-latex/unnamed-chunk-1-1.pdf  used on input line 268.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 [2{/Users/amaurytriomphe/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
 <projet1---rapport_files/figure-latex/unnamed-chunk-1-2.pdf, id=66, 469.755pt x 325.215pt>
 File: projet1---rapport_files/figure-latex/unnamed-chunk-1-2.pdf Graphic file (type pdf)
 <use projet1---rapport_files/figure-latex/unnamed-chunk-1-2.pdf>
-Package pdftex.def Info: projet1---rapport_files/figure-latex/unnamed-chunk-1-2.pdf  used on input line 271.
+Package pdftex.def Info: projet1---rapport_files/figure-latex/unnamed-chunk-1-2.pdf  used on input line 270.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[3 <./projet1---rapport_files/figure-latex/unnamed-chunk-1-1.pdf>] [4 <./projet1---rapport_files/figure-latex/unnamed-chunk-1-2.pdf>] (./projet1---rapport.aux)
+[3 <./projet1---rapport_files/figure-latex/unnamed-chunk-1-1.pdf>]
+<projet1---rapport_files/figure-latex/unnamed-chunk-2-1.pdf, id=81, 469.755pt x 325.215pt>
+File: projet1---rapport_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file (type pdf)
+<use projet1---rapport_files/figure-latex/unnamed-chunk-2-1.pdf>
+Package pdftex.def Info: projet1---rapport_files/figure-latex/unnamed-chunk-2-1.pdf  used on input line 304.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+[4 <./projet1---rapport_files/figure-latex/unnamed-chunk-1-2.pdf>] [5 <./projet1---rapport_files/figure-latex/unnamed-chunk-2-1.pdf>] (./projet1---rapport.aux)
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `projet1---rapport.out' has not changed.
-(rerunfilecheck)             Checksum: E583BEFAEA118773876A51158C0E3CC7;1468.
+(rerunfilecheck)             Checksum: BAD081422651A15E1A4ECA342F2077F6;1285.
  ) 
 Here is how much of TeX's memory you used:
- 10772 strings out of 476126
- 167496 string characters out of 5793920
+ 10782 strings out of 476126
+ 168062 string characters out of 5793920
  1953525 words of memory out of 5000000
- 32632 multiletter control sequences out of 15000+600000
+ 32641 multiletter control sequences out of 15000+600000
  620416 words of font info for 85 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  75i,12n,79p,327b,513s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/amaurytriomphe/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></Users/amaurytriomphe/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Users/amaurytriomphe/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></Users/amaurytriomphe/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmex10.pfb></Users/amaurytriomphe/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></Users/amaurytriomphe/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi5.pfb></Users/amaurytriomphe/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></Users/amaurytriomphe/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></Users/amaurytriomphe/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></Users/amaurytriomphe/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></Users/amaurytriomphe/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb></Users/amaurytriomphe/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr6.pfb></Users/amaurytriomphe/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr7.pfb></Users/amaurytriomphe/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr9.pfb></Users/amaurytriomphe/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></Users/amaurytriomphe/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></Users/amaurytriomphe/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on projet1---rapport.pdf (4 pages, 656338 bytes).
+Output written on projet1---rapport.pdf (5 pages, 659118 bytes).
 PDF statistics:
- 179 PDF objects out of 1000 (max. 8388607)
- 132 compressed objects within 2 object streams
- 23 named destinations out of 1000 (max. 500000)
- 67 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 190 PDF objects out of 1000 (max. 8388607)
+ 140 compressed objects within 2 object streams
+ 24 named destinations out of 1000 (max. 500000)
+ 72 words of extra memory for PDF output out of 10000 (max. 10000000)
 

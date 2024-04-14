@@ -60,7 +60,7 @@ Le contexte de notre projet est l'étude de la germination de graines respectant
 ```
 # Cadre mathématique
 
-## Hypothèses sur nos données (Matheus)
+## Hypothèses sur nos données 
 
 Si $p_i$ est la probabilité de germination sur la plaque $i$, alors supposons que le nombre de graines germées $r_i$ suit une loi binomiale :
 
@@ -85,9 +85,9 @@ $$
 
 Une dernière hypothèse que nous ferons également est que $r_i$ sont indépendants.
 
-## Graphe acyclique orienté (Najib)
+## Graphe acyclique orienté 
 
-## Lois conditionnelles (Matheus)
+## Lois conditionnelles 
 
 Comme nous allons appliquer Hastings-within-Gibbs, nous devrons avoir les lois conditionnelles de tous les paramètres de l'expression de $logit(p_i)$, c'est-à-dire que nous devrons obtenir toutes les lois postérieures. Pour $\alpha_0$, nous aurons :
 
@@ -302,23 +302,45 @@ Les résultats obtenues sont cohérents avec l'objectif initial visé dans l'én
 
 (Voir pour les sigma)
 
-# Analyse des résultats (Amaury)
+# Interprétation des résultats
+
+On va maintenant essayer de voir l'impact de x1 et x2 sur logit(p). Pour cela, on réutilise les moyennes des variables aléatoires que l'on a calculé avant. 
 
 ```{=tex}
 \begin{table}[h]
 \centering
 \small
-\begin{tabular}{|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|}
 \hline
-\textbf{Nom} & \textbf{x1} & \textbf{x2} & \textbf{logit(p)} \\
+\textbf{Nom} & \textbf{x1} & \textbf{x2} & \textbf{logit(p)} & \textbf{ecart-type}\\
 \hline
-Bean 75 & 0 & 0 & -0.5517254 \\
-Cucumber 75 & 0 & 1 & 0.8027722  \\
-Bean 73 & 1 & 0 & -0.4682697 \\
-Cucumber 73 & 1 & 1 & 0.04229868 \\
+Bean 75 & 0 & 0 & -0.5517254 & 0.309775 \\
+Cucumber 75 & 0 & 1 & 0.8027722 & 0.4157986 \\
+Bean 73 & 1 & 0 & -0.4682697 & 0.4345104 \\
+Cucumber 73 & 1 & 1 & 0.04229868 & 0.6678286 \\
 \hline
 \end{tabular}
 \caption{Logit(p) pour différentes valeurs de x1 et x2}
 \label{tab:tableau_combine}
 \end{table}
 ```
+
+```{r, echo=FALSE, fig.align='center'}
+# Données
+noms <- c('Bean 75', 'Cucumber 75', 'Bean 73', 'Cucumber 73')
+logit_p <- c(-0.5517254, 0.8027722, -0.4682697, 0.04229868)
+ecart_type <- c(0.309775, 0.4157986, 0.4345104, 0.6678286)
+
+# Création du graphique
+barplot_height <- logit_p
+barplot_errors <- ecart_type
+
+# Création du graphique à barres avec barres d'erreur
+barplot(barplot_height, names.arg=noms, ylim=c(min(logit_p - barplot_errors), max(logit_p + barplot_errors)),
+        main='Logit(p) et écart-type pour différentes valeurs de x1 et x2',
+        xlab='Nom', ylab='Logit(p)', col='blue', beside=TRUE)
+arrows(x0=1:4, y0=logit_p - barplot_errors, y1=logit_p + barplot_errors, angle=90, code=3, length=0.05)
+
+```
+
+On voit que le cucumber de l'aegyptiao 75 est celle qui a le plus de chance de germer. C'est notamment plus élévé que pour l'autre type de graine l'aegyptiao 73 avec la même racine (cucumber). Pour la racine bean, on a mons de chance de germer que pour cucumber et il a très peu de différences selon le type de graine(aegyptiao 75 ou aegyptiao 73).
