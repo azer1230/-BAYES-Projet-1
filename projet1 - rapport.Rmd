@@ -71,7 +71,7 @@ De plus, supposons que le modèle est essentiellement une régression logistique
 
 $$
   \text{logit}(p_i) = \alpha_0 + \alpha_1x_{1i} + \alpha_2x_{2i} + \alpha_{12}x_{1i}x_{2i} + b_i \\
-  \text{où } b_i \sim \mathcal{N}(0,\tau)
+  \text{où } b_i \sim \mathcal{N}(0,\frac{1}{\tau})
 $$
 
 Où $x_{1i}$, $x_{2i}$ sont le type de graine et l'extrait de racine de la $i$-ème plaque, et un terme d'interaction $\alpha_{12}x_{1i}x_{2i}$ est inclus. $\alpha_0, \alpha_1, \alpha_2, \alpha_{12}, \tau$ ont des priors indépendants "non informatifs" fournis, qui seront supposés comme suit :
@@ -149,8 +149,7 @@ $\sigma$ & 0.3198 & 0.267 & 0.0661 & 0.1471 \\
 \end{minipage}
 \end{table}
 ```
-
-On rend également compte des résultats des chaînes de Markov générées (à gauche), ainsi que de leurs distributions (à droite) dans ls graphiques ci-dessous: 
+On rend également compte des résultats des chaînes de Markov générées (à gauche), ainsi que de leurs distributions (à droite) dans ls graphiques ci-dessous:
 
 ```{r, echo=FALSE, fig.align='center'}
 # Notations changées par rapport au fichier seeds.data pour être en accord avec 
