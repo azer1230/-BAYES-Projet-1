@@ -89,6 +89,9 @@ Une dernière hypothèse que nous ferons également est que $r_i$ sont indépend
 ```{=tex}
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows.meta, positioning}
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[>=Stealth, auto, node distance=2.5cm, every node/.style={rectangle, draw, minimum width=2cm, minimum height=1cm}]
 
 ```
 ## Lois conditionnelles 
