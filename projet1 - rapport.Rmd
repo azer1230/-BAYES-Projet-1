@@ -1,8 +1,10 @@
 ---
 title: "Seeds - Random effect logistic regression"
-author: "BRUNO LOPES Matheus, MOURDI Elias, SELAMNIA Najib, TRIOMPHE Amaury, YOUSFI Rim"
+author: BRUNO LOPES Matheus, MOURDI Elias, SELAMNIA Najib, TRIOMPHE Amaury, YOUSFI
+  Rim
 date: "15/04/2024"
 output:
+  pdf_document: default
   html_document:
     df_print: paged
 keep_tex: yes
