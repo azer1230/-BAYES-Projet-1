@@ -1,9 +1,21 @@
 ---
+<<<<<<< HEAD
+=======
+output:
+  pdf_document: default
+  html_document: default
+---
+<<<<<<< HEAD
+---
+>>>>>>> b17e50182390bc0aa1ea3516b073c8f813640e47
 title: "Seeds - Random effect logistic regression"
 author: "BRUNO LOPES Matheus, MOURDI Elias, SELAMNIA Najib, TRIOMPHE Amaury, YOUSFI Rim"
 date: "15/04/2024"
 output:
+<<<<<<< HEAD
   pdf_document: default
+=======
+>>>>>>> b17e50182390bc0aa1ea3516b073c8f813640e47
   html_document:
     df_print: paged
 keep_tex: yes
@@ -11,9 +23,20 @@ keep_tex: yes
 
 **Lien vers notre Github** : `https://github.com/azer1230/-BAYES-Projet-1`
 
+<<<<<<< HEAD
 # Données étudiées
 
 Le contexte de notre projet est l'étude de la germination de graines respectant certaines propriétés. Dans notre exemple, $N = 21$ plaques sont disposées pour accueillir 2 types de graines issues de deux types de racines. Les tableaux ci-dessous recensent les résultat pour ces 4 types de population. $\forall i \in \{1,...,21\}, r_i$ correspond au nombre de graines germées et $n_i$ correspond au nombre total de graines sur la $i-$ème plaque. Le rapport entre ces deux grandeurs est donc la proportion de graines ayant germé sur la dite plaque.
+=======
+```{r}
+library(coda)
+```
+
+
+# Données étudiées
+
+Le contexte de notre projet est l'étude de la germination de graines respectant certaines propriétés. Dans notre exemple, $N = 21$ plaques sont disposées pour accueillir 2 types de graines issues de 2 types de racines. Les tableaux ci-dessous recensent les résultat pour ces 4 types de population. $\forall i \in \{1,...,21\}, r_i$ correspond au nombre de graines germées et $n_i$ correspond au nombre total de graines sur la $i-$ème plaque. Le rapport entre ces deux grandeurs est donc la proportion de graines ayant germé sur la dite plaque.
+>>>>>>> b17e50182390bc0aa1ea3516b073c8f813640e47
 
 ```{=tex}
 \begin{table}[h]
@@ -60,7 +83,11 @@ Le contexte de notre projet est l'étude de la germination de graines respectant
 ```
 # Cadre mathématique
 
+<<<<<<< HEAD
 ## Hypothèses sur nos données
+=======
+## Hypothèses sur nos données 
+>>>>>>> b17e50182390bc0aa1ea3516b073c8f813640e47
 
 Si $p_i$ est la probabilité de germination sur la plaque $i$, alors supposons que le nombre de graines germées $r_i$ suit une loi binomiale :
 
@@ -72,7 +99,11 @@ De plus, supposons que le modèle est essentiellement une régression logistique
 
 $$
   \text{logit}(p_i) = \alpha_0 + \alpha_1x_{1i} + \alpha_2x_{2i} + \alpha_{12}x_{1i}x_{2i} + b_i \\
+<<<<<<< HEAD
   \text{où } b_i \sim \mathcal{N}(0,\tau)
+=======
+  \text{où } b_i \sim \mathcal{N}(0,\frac{1}{\tau})
+>>>>>>> b17e50182390bc0aa1ea3516b073c8f813640e47
 $$
 
 Où $x_{1i}$, $x_{2i}$ sont le type de graine et l'extrait de racine de la $i$-ème plaque, et un terme d'interaction $\alpha_{12}x_{1i}x_{2i}$ est inclus. $\alpha_0, \alpha_1, \alpha_2, \alpha_{12}, \tau$ ont des priors indépendants "non informatifs" fournis, qui seront supposés comme suit :
@@ -86,7 +117,10 @@ $$
 Une dernière hypothèse que nous ferons également est que $r_i$ sont indépendants.
 
 ## Graphe acyclique orienté
+<<<<<<< HEAD
 
+=======
+>>>>>>> b17e50182390bc0aa1ea3516b073c8f813640e47
 ```{=tex}
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows.meta, positioning}
@@ -121,8 +155,17 @@ Une dernière hypothèse que nous ferons également est que $r_i$ sont indépend
 \end{tikzpicture}
     \caption{Graphe DAG représentant le modèle}
 \end{figure}
+<<<<<<< HEAD
 ```
 ## Lois conditionnelles
+=======
+
+```
+
+
+
+## Lois conditionnelles 
+>>>>>>> b17e50182390bc0aa1ea3516b073c8f813640e47
 
 Comme nous allons appliquer Hastings-within-Gibbs, nous devrons avoir les lois conditionnelles de tous les paramètres de l'expression de $logit(p_i)$, c'est-à-dire que nous devrons obtenir toutes les lois postérieures. Pour $\alpha_0$, nous aurons :
 
@@ -185,7 +228,11 @@ $\sigma$ & 0.3198 & 0.267 & 0.0661 & 0.1471 \\
 \end{minipage}
 \end{table}
 ```
+<<<<<<< HEAD
 On rend également compte des résultats des chaînes de Markov générées (à gauche), ainsi que de leurs distributions (à droite) dans ls graphiques ci-dessous:
+=======
+On rend également compte des résultats des chaînes de Markov générées (à gauche), ainsi que de leurs distributions (à droite) dans les graphiques ci-dessous:
+>>>>>>> b17e50182390bc0aa1ea3516b073c8f813640e47
 
 ```{r, echo=FALSE, fig.align='center'}
 # Notations changées par rapport au fichier seeds.data pour être en accord avec 
@@ -332,6 +379,7 @@ mtext(expression("Graphiques pour " * alpha[2]), side = 3, line = 12)
 mtext(expression("Graphiques pour " * sigma), side = 3, line = 1)
 ```
 
+<<<<<<< HEAD
 Les résultats obtenues sont cohérents avec l'objectif initial visé dans l'énoncé. Les valeurs sont distribuées autour des moyennes attendues et les écart-types sont également en accord avec les attentes, en observant des variations inférieurs à 20%.
 
 (Voir pour les sigma)
@@ -339,6 +387,14 @@ Les résultats obtenues sont cohérents avec l'objectif initial visé dans l'én
 # Interprétation des résultats
 
 On va maintenant essayer de voir l'impact de x1 et x2 sur logit(p). Pour cela, on réutilise les moyennes des variables aléatoires que l'on a calculé avant.
+=======
+Les résultats obtenues sont cohérents avec l'objectif initial visé dans l'énoncé. Les valeurs sont distribuées autour des moyennes attendues et les écart-types sont également en accord avec les attentes, en observant des variations inférieurs à 20 (sauf pour sigma)
+
+
+# Interprétation des résultats
+
+On va maintenant essayer de voir l'impact de x1 et x2 sur logit(p). Pour cela, on réutilise les moyennes des variables aléatoires que l'on a calculé avant. 
+>>>>>>> b17e50182390bc0aa1ea3516b073c8f813640e47
 
 ```{=tex}
 \begin{table}[h]
@@ -358,6 +414,10 @@ Cucumber 73 & 1 & 1 & 0.04229868 & 0.6678286 \\
 \label{tab:tableau_combine}
 \end{table}
 ```
+<<<<<<< HEAD
+=======
+
+>>>>>>> b17e50182390bc0aa1ea3516b073c8f813640e47
 ```{r, echo=FALSE, fig.align='center'}
 # Données
 noms <- c('Bean 75', 'Cucumber 75', 'Bean 73', 'Cucumber 73')
@@ -377,3 +437,7 @@ arrows(x0=1:4, y0=logit_p - barplot_errors, y1=logit_p + barplot_errors, angle=9
 ```
 
 On voit que le cucumber de l'aegyptiao 75 est celle qui a le plus de chance de germer. C'est notamment plus élévé que pour l'autre type de graine l'aegyptiao 73 avec la même racine (cucumber). Pour la racine bean, on a mons de chance de germer que pour cucumber et il a très peu de différences selon le type de graine(aegyptiao 75 ou aegyptiao 73).
+<<<<<<< HEAD
+=======
+>>>>>>> b3fffae2b0c074065df4784c64dcb82510acce57
+>>>>>>> b17e50182390bc0aa1ea3516b073c8f813640e47
