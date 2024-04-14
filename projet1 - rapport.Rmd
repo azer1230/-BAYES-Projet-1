@@ -13,7 +13,7 @@ keep_tex: yes
 
 # Données étudiées
 
-Le contexte de notre projet est l'étude de la germination de graines respectant certaines propriétés. Dans notre exemple, $N = 21$ plaques sont disposées pour accueillir 2 types de graines issues de 2 types de racines. Les tableaux ci-dessous recensent les résultat pour ces 4 types de population. $\forall i \in \{1,...,21\}, r_i$ correspond au nombre de graines germées et $n_i$ correspond au nombre total de graines sur la $i-$ème plaque. Le rapport entre ces deux grandeurs est donc la proportion de graines ayant germé sur la dite plaque.
+Le contexte de notre projet est l'étude de la germination de graines respectant certaines propriétés. Dans notre exemple, $N = 21$ plaques sont disposées pour accueillir 2 types de graines issues de deux types de racines. Les tableaux ci-dessous recensent les résultat pour ces 4 types de population. $\forall i \in \{1,...,21\}, r_i$ correspond au nombre de graines germées et $n_i$ correspond au nombre total de graines sur la $i-$ème plaque. Le rapport entre ces deux grandeurs est donc la proportion de graines ayant germé sur la dite plaque.
 
 ```{=tex}
 \begin{table}[h]
@@ -60,7 +60,7 @@ Le contexte de notre projet est l'étude de la germination de graines respectant
 ```
 # Cadre mathématique
 
-## Hypothèses sur nos données 
+## Hypothèses sur nos données
 
 Si $p_i$ est la probabilité de germination sur la plaque $i$, alors supposons que le nombre de graines germées $r_i$ suit une loi binomiale :
 
@@ -85,7 +85,8 @@ $$
 
 Une dernière hypothèse que nous ferons également est que $r_i$ sont indépendants.
 
-## Graphe acyclique orienté 
+## Graphe acyclique orienté
+
 ```{=tex}
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows.meta, positioning}
@@ -120,9 +121,8 @@ Une dernière hypothèse que nous ferons également est que $r_i$ sont indépend
 \end{tikzpicture}
     \caption{Graphe DAG représentant le modèle}
 \end{figure}
-
 ```
-## Lois conditionnelles 
+## Lois conditionnelles
 
 Comme nous allons appliquer Hastings-within-Gibbs, nous devrons avoir les lois conditionnelles de tous les paramètres de l'expression de $logit(p_i)$, c'est-à-dire que nous devrons obtenir toutes les lois postérieures. Pour $\alpha_0$, nous aurons :
 
@@ -185,8 +185,7 @@ $\sigma$ & 0.3198 & 0.267 & 0.0661 & 0.1471 \\
 \end{minipage}
 \end{table}
 ```
-
-On rend également compte des résultats des chaînes de Markov générées (à gauche), ainsi que de leurs distributions (à droite) dans ls graphiques ci-dessous: 
+On rend également compte des résultats des chaînes de Markov générées (à gauche), ainsi que de leurs distributions (à droite) dans ls graphiques ci-dessous:
 
 ```{r, echo=FALSE, fig.align='center'}
 # Notations changées par rapport au fichier seeds.data pour être en accord avec 
@@ -339,7 +338,7 @@ Les résultats obtenues sont cohérents avec l'objectif initial visé dans l'én
 
 # Interprétation des résultats
 
-On va maintenant essayer de voir l'impact de x1 et x2 sur logit(p). Pour cela, on réutilise les moyennes des variables aléatoires que l'on a calculé avant. 
+On va maintenant essayer de voir l'impact de x1 et x2 sur logit(p). Pour cela, on réutilise les moyennes des variables aléatoires que l'on a calculé avant.
 
 ```{=tex}
 \begin{table}[h]
@@ -359,7 +358,6 @@ Cucumber 73 & 1 & 1 & 0.04229868 & 0.6678286 \\
 \label{tab:tableau_combine}
 \end{table}
 ```
-
 ```{r, echo=FALSE, fig.align='center'}
 # Données
 noms <- c('Bean 75', 'Cucumber 75', 'Bean 73', 'Cucumber 73')

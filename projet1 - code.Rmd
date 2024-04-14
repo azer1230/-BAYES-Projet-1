@@ -177,8 +177,6 @@ plot(mcmc(resultat_chain)[,4:5])
 
 mtext(expression("Graphiques pour " * alpha[2]), side = 3, line = 12)
 mtext(expression("Graphiques pour " * sigma), side = 3, line = 1)
-
-
 ```
 
 ## Vérification de b pour quelques valeurs.
