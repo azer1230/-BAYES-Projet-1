@@ -34,7 +34,7 @@ tau <- 10
 b <- c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 ```
 
-# Implémentation de la méthode MCMC (Hastings within Gibbs)
+# 
 
 ```{r}
 seeds = function(nchain, N, r, n, x1, x2, alpha0, alpha1, alpha2, alpha12, tau, b, prop_sd){
