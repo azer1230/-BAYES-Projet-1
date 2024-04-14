@@ -105,6 +105,18 @@ Une dernière hypothèse que nous ferons également est que $r_i$ sont indépend
         \node (r) [below=1.5cm of p] {$r[i]$};
         \node (n) [below right=1.5cm and 1.5cm of r] {$n[i]$};
         \node (sigma) [right=1.5cm of tau] {$\sigma$};
+% Arrows
+        \draw[->] (alpha0) -- (p);
+        \draw[->] (alpha1) -- (p);
+        \draw[->] (alpha2) -- (p);
+        \draw[->] (alpha12) -- (p);
+        \draw[->] (x1) -- (p);
+        \draw[->] (x2) -- (p);
+        \draw[->] (tau) -- (b);
+        \draw[->] (tau) -- (sigma);
+        \draw[->] (b) -- (p);
+        \draw[->] (p) -- (r);
+        \draw[->] (n) -- (r);
 
 ```
 ## Lois conditionnelles 
