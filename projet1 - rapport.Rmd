@@ -87,6 +87,11 @@ Une dernière hypothèse que nous ferons également est que $r_i$ sont indépend
 
 ## Graphe acyclique orienté 
 
+install.packages("igraph")
+library(igraph)
+graph <- graph(edges=c("alpha0","p[i]", "alpha1","p[i]", "alpha2","p[i]", "alpha 1 2","p[i]", "x1[i]","p[i]", "x2[i]","p[i]", "tau","b[i]", "b[i]","p[i]","p[i]","r[i]","n[i]","r[i]","tau","sigma"), directed=TRUE)
+plot(graph, layout=layout.circle, edge.arrow.size=0.5, vertex.shape="rectangle", vertex.size=50, vertex.label.color="black", vertex.label.cex=1, edge.width=1.9)
+
 ## Lois conditionnelles 
 
 Comme nous allons appliquer Hastings-within-Gibbs, nous devrons avoir les lois conditionnelles de tous les paramètres de l'expression de $logit(p_i)$, c'est-à-dire que nous devrons obtenir toutes les lois postérieures. Pour $\alpha_0$, nous aurons :
