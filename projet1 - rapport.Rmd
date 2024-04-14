@@ -117,6 +117,9 @@ Une dernière hypothèse que nous ferons également est que $r_i$ sont indépend
         \draw[->] (b) -- (p);
         \draw[->] (p) -- (r);
         \draw[->] (n) -- (r);
+\end{tikzpicture}
+    \caption{Graphe DAG représentant le modèle}
+\end{figure}
 
 ```
 ## Lois conditionnelles 
