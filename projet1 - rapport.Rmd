@@ -85,6 +85,18 @@ $$
 
 Une dernière hypothèse que nous ferons également est que $r_i$ sont indépendants.
 
+## Interprétation du modèle
+
+En considérant $r_i$ comme le nombre de graines germées sur un total de $n_i$ graines, et $p_i$ comme la probabilité de germination, il est pertinent d'appliquer une distribution binomiale pour modéliser le nombre de succès parmi les $n_i$ expériences. 
+
+Pour estimer $p_i$, nous optons pour une régression logistique à effet aléatoire, explorant ainsi l'impact des variables explicatives $x_1$ et $x_2$. Dans ce contexte, $\alpha_0$ désigne l'intercept et $b$ les résidus du modèle. Les coefficients de régression $\alpha_1$ et $\alpha_2$ évaluent respectivement l'influence individuelle de $x_1$ et $x_2$, tandis que $\alpha_{12}$ capture leur effet conjoint.
+
+Contrairement à la régression logistique "classique", où les paramètres du modèle sont considérés comme fixes, notre approche considère ces paramètres comme des variables aléatoires. Cela permet de prendre en compte la dépendance entre les observations, une caractéristique souvent présente dans les données réelles mais rarement prise en compte par les modèles classiques.
+
+Pour la distribution a priori de $\tau$, nous choisissons une loi Gamma en raison de sa propriété d'être strictement positive, et aussi parce que la loi Gamma est conjuguée dans ce contexte.
+
+
+
 ## Graphe acyclique orienté 
 
 ## Lois conditionnelles 
