@@ -86,6 +86,44 @@ $$
 Une dernière hypothèse que nous ferons également est que $r_i$ sont indépendants.
 
 ## Graphe acyclique orienté (Najib)
+```{=tex}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows.meta, positioning}
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[>=Stealth, auto, node distance=2.5cm, every node/.style={rectangle, draw, minimum width=2cm, minimum height=1cm}]
+% Nodes
+        \node (p) {$p[i]$};
+        \node (alpha0) [above left=1.5cm and 1.5cm of p] {$\alpha_0$};
+        \node (alpha1) [left=1.5cm of p] {$\alpha_1$};
+        \node (alpha2) [below left=1.5cm and 1.5cm of p] {$\alpha_2$};
+        \node (alpha12) [below right=1.5cm and 1.5cm of p] {$\alpha_{12}$};
+        \node (x1) [above right=1.5cm and 1.5cm of p] {$x_1[i]$};
+        \node (x2) [right=1.5cm of p] {$x_2[i]$};
+        \node (tau) [above right=1.5cm and 1.5cm of alpha0] {$\tau$};
+        \node (b) [above right=1.5cm and 1.5cm of alpha1] {$b[i]$};
+        \node (r) [below=1.5cm of p] {$r[i]$};
+        \node (n) [below right=1.5cm and 1.5cm of r] {$n[i]$};
+        \node (sigma) [right=1.5cm of tau] {$\sigma$};
+% Arrows
+        \draw[->] (alpha0) -- (p);
+        \draw[->] (alpha1) -- (p);
+        \draw[->] (alpha2) -- (p);
+        \draw[->] (alpha12) -- (p);
+        \draw[->] (x1) -- (p);
+        \draw[->] (x2) -- (p);
+        \draw[->] (tau) -- (b);
+        \draw[->] (tau) -- (sigma);
+        \draw[->] (b) -- (p);
+        \draw[->] (p) -- (r);
+        \draw[->] (n) -- (r);
+\end{tikzpicture}
+    \caption{Graphe DAG représentant le modèle}
+\end{figure}
+
+```
+
+
 
 ## Lois conditionnelles (Matheus)
 
