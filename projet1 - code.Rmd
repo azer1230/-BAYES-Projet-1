@@ -206,11 +206,6 @@ sdb_chain = apply(resultat_b_chain, 2, sd) #ecart-type de b
 ```
 
 ```{r}
-2**2
-```
-
-
-```{r}
 #pour les alpha, on utilise les moyennes calculé précèment. Pour b, on fait en plus la moyenne sur les plaques qui ont les mêmes types de graines.
 cat("logit(p) : ", "\n")
 cat("pour x1 = 0 et x2 = 0:", moychain[1] + moychain[2]*0 + moychain[3]*0 + moychain[4]*0 + mean(moyb_chain[1:5]), "(écart-type :",sqrt(sdchain[1]**2 + (sdchain[2]*0)**2 + (sdchain[3]*0)**2 + (sdchain[4]*0)**2 + mean(sdb_chain[1:5])**2) , ")", "\n")
