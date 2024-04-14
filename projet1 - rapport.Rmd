@@ -87,7 +87,8 @@ Une dernière hypothèse que nous ferons également est que $r_i$ sont indépend
 
 ## Graphe acyclique orienté 
 ```{=tex}
-
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows.meta, positioning}
 
 ```
 ## Lois conditionnelles 
