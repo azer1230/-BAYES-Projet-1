@@ -1,7 +1,7 @@
 <<<<<<< HEAD
 ---
 title: "Seeds - Random effect logistic regression"
-author: "BRUNO LOPES Matheus, MOURDI Elias, SELAMNIA Najib, TRIOMPHE Amaury"
+author: "BRUNO LOPES Matheus, MOURDI Elias, SELAMNIA Najib, TRIOMPHE Amaury, YOUSFI Rim"
 date: "15/04/2024"
 output:
   html_document:
